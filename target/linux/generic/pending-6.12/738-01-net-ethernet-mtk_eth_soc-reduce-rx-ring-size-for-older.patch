@@ -93,7 +93,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  	},
  };
  
-@@ -5709,7 +5709,7 @@ static const struct mtk_soc_data rt5350_
+@@ -5363,7 +5363,7 @@
  		.dma_l4_valid = RX_DMA_L4_VALID_PDMA,
  		.dma_max_len = MTK_TX_DMA_BUF_LEN,
  		.dma_len_offset = 16,
@@ -101,4 +101,6 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 +		.dma_size = MTK_DMA_SIZE(256),
  	},
  };
+ 
+
  

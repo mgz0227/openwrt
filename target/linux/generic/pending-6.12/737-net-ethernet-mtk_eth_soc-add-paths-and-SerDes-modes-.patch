@@ -214,19 +214,7 @@ Signed-off-by: Daniel Golle <daniel@makrotopia.org>
  #include <linux/jhash.h>
  #include <linux/bitfield.h>
  #include <net/dsa.h>
-@@ -270,12 +272,8 @@ static const char * const mtk_clks_sourc
- 	"ethwarp_wocpu2",
- 	"ethwarp_wocpu1",
- 	"ethwarp_wocpu0",
--	"top_usxgmii0_sel",
--	"top_usxgmii1_sel",
- 	"top_sgm0_sel",
- 	"top_sgm1_sel",
--	"top_xfi_phy0_xtal_sel",
--	"top_xfi_phy1_xtal_sel",
- 	"top_eth_gmii_sel",
- 	"top_eth_refck_50m_sel",
- 	"top_eth_sys_200m_sel",
+
 @@ -518,6 +516,30 @@ static void mtk_setup_bridge_switch(stru
  		MTK_GSW_CFG);
  }

@@ -134,17 +134,7 @@ Signed-off-by: Daniel Golle <daniel@makrotopia.org>
  	default:
  		updated = false;
  	}
-@@ -210,13 +285,25 @@ static const struct mtk_eth_muxc mtk_eth
- 		.cap_bit = MTK_ETH_MUX_U3_GMAC2_TO_QPHY,
- 		.set_path = set_mux_u3_gmac2_to_qphy,
- 	}, {
-+		.name = "mux_gmac2_to_2p5gphy",
-+		.cap_bit = MTK_ETH_MUX_GMAC2_TO_2P5GPHY,
-+		.set_path = set_mux_gmac2_to_2p5gphy,
-+	}, {
- 		.name = "mux_gmac1_gmac2_to_sgmii_rgmii",
- 		.cap_bit = MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII,
- 		.set_path = set_mux_gmac1_gmac2_to_sgmii_rgmii,
+@@ -216,7 +216,15 @@
  	}, {
  		.name = "mux_gmac12_to_gephy_sgmii",
  		.cap_bit = MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII,
@@ -160,6 +150,8 @@ Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 +		.set_path = set_mux_gmac123_to_usxgmii,
  	},
  };
+ 
+
  
 @@ -249,12 +336,39 @@ out:
  	return err;

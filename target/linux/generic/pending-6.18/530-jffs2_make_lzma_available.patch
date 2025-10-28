@@ -1097,7 +1097,7 @@ Signed-off-by: Alexandros C. Couloumbis <alex@ozo.com>
  #define JFFS2_NODE_ACCURATE 0x2000
 --- a/lib/Kconfig
 +++ b/lib/Kconfig
-@@ -353,6 +353,12 @@ config ZSTD_DECOMPRESS
+@@ -216,6 +216,12 @@ config ZSTD_DECOMPRESS
  
  source "lib/xz/Kconfig"
  
@@ -1112,7 +1112,7 @@ Signed-off-by: Alexandros C. Couloumbis <alex@ozo.com>
  # ZLIB_INFLATE; DECOMPRESS_GZIP is just a wrapper.)
 --- a/lib/Makefile
 +++ b/lib/Makefile
-@@ -126,6 +126,16 @@ CFLAGS_kobject.o += -DDEBUG
+@@ -117,6 +117,16 @@ CFLAGS_kobject.o += -DDEBUG
  CFLAGS_kobject_uevent.o += -DDEBUG
  endif
  
@@ -1129,7 +1129,7 @@ Signed-off-by: Alexandros C. Couloumbis <alex@ozo.com>
  obj-$(CONFIG_DEBUG_INFO_REDUCED) += debug_info.o
  CFLAGS_debug_info.o += $(call cc-option, -femit-struct-debug-detailed=any)
  
-@@ -185,6 +195,8 @@ obj-$(CONFIG_ZSTD_COMPRESS) += zstd/
+@@ -165,6 +175,8 @@ obj-$(CONFIG_ZSTD_COMPRESS) += zstd/
  obj-$(CONFIG_ZSTD_DECOMPRESS) += zstd/
  obj-$(CONFIG_XZ_DEC) += xz/
  obj-$(CONFIG_RAID6_PQ) += raid6/

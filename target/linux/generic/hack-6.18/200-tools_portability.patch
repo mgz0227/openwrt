@@ -26,8 +26,8 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  # Some tools require Clang, LLC and/or LLVM utils
  CLANG		?= clang
  LLC		?= llc
-@@ -92,8 +93,9 @@ LLVM_OBJCOPY	?= llvm-objcopy
- LLVM_STRIP	?= llvm-strip
+@@ -95,8 +96,9 @@ LLVM_STRIP	?= llvm-strip
+ SYSTEM_BPFTOOL	?= bpftool
  
  ifeq ($(CC_NO_CLANG), 1)
 -EXTRA_WARNINGS += -Wstrict-aliasing=3
@@ -40,7 +40,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  # sysroots and flags or to avoid the GCC call in pure Clang builds.
 --- a/tools/include/linux/types.h
 +++ b/tools/include/linux/types.h
-@@ -56,6 +56,7 @@ typedef __s8  s8;
+@@ -58,6 +58,7 @@ typedef unsigned long long	ullong;
  #define __user
  #endif
  #define __must_check
@@ -106,26 +106,6 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  /* insn_attr_t is defined in inat.h */
  #include "inat.h" /* __ignore_sync_check__ */
  
---- a/tools/arch/x86/include/asm/orc_types.h
-+++ b/tools/arch/x86/include/asm/orc_types.h
-@@ -46,7 +46,17 @@
- #define ORC_TYPE_REGS_PARTIAL		4
- 
- #ifndef __ASSEMBLY__
-+#ifdef __APPLE__
-+#include <endian.h>
-+
-+#if __BYTE_ORDER == __LITTLE_ENDIAN
-+#define __LITTLE_ENDIAN_BITFIELD
-+#elif __BYTE_ORDER == __BIG_ENDIAN
-+#define __BIG_ENDIAN_BITFIELD
-+#endif
-+#else
- #include <asm/byteorder.h>
-+#endif
- 
- /*
-  * This struct is more or less a vastly simplified version of the DWARF Call
 --- a/tools/include/linux/rbtree.h
 +++ b/tools/include/linux/rbtree.h
 @@ -18,7 +18,6 @@
@@ -151,8 +131,8 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  static const char *argv0_path;
 --- a/tools/objtool/Makefile
 +++ b/tools/objtool/Makefile
-@@ -39,6 +39,8 @@ OBJTOOL_LDFLAGS := $(LIBELF_LIBS) $(LIBS
- elfshdr := $(shell echo '$(pound)include <libelf.h>' | $(HOSTCC) $(OBJTOOL_CFLAGS) -x c -E - | grep elf_getshdr)
+@@ -40,6 +40,8 @@ OBJTOOL_LDFLAGS := $(LIBELF_LIBS) $(LIBS
+ elfshdr := $(shell echo '$(pound)include <libelf.h>' | $(HOSTCC) $(OBJTOOL_CFLAGS) -x c -E - 2>/dev/null | grep elf_getshdr)
  OBJTOOL_CFLAGS += $(if $(elfshdr),,-DLIBELF_USE_DEPRECATED)
  
 +OBJTOOL_CFLAGS += $(HOST_EXTRACFLAGS)

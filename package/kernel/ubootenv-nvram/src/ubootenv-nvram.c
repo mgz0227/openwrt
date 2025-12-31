@@ -142,7 +142,7 @@ static void ubootenv_remove(struct platform_device *pdev)
 
 static struct platform_driver ubootenv_driver = {
 	.probe = ubootenv_probe,
-	.remove_new = ubootenv_remove,
+	.remove = ubootenv_remove,
 	.driver = {
 		.name           = NAME,
 		.of_match_table = of_ubootenv_match,

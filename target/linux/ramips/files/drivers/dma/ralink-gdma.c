@@ -901,7 +901,7 @@ static void gdma_dma_remove(struct platform_device *pdev)
 
 static struct platform_driver gdma_dma_driver = {
 	.probe = gdma_dma_probe,
-	.remove_new = gdma_dma_remove,
+	.remove = gdma_dma_remove,
 	.driver = {
 		.name = "gdma-rt2880",
 		.of_match_table = gdma_of_match_table,

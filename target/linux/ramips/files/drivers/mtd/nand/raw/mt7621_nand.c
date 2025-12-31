@@ -1331,7 +1331,7 @@ MODULE_DEVICE_TABLE(of, match);
 
 static struct platform_driver mt7621_nfc_driver = {
 	.probe = mt7621_nfc_probe,
-	.remove_new = mt7621_nfc_remove,
+	.remove = mt7621_nfc_remove,
 	.driver = {
 		.name = MT7621_NFC_NAME,
 		.of_match_table = mt7621_nfc_id_table,

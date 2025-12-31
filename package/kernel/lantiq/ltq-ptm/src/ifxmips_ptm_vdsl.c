@@ -1167,7 +1167,7 @@ static int __init queue_gamma_map_setup(char *line)
 #endif
 static struct platform_driver ltq_ptm_driver = {
 	.probe = ltq_ptm_probe,
-	.remove_new = ltq_ptm_remove,
+	.remove = ltq_ptm_remove,
 	.driver = {
 		.name = "ptm",
 		.of_match_table = ltq_ptm_match,

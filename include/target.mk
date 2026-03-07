@@ -50,10 +50,10 @@ DEFAULT_PACKAGES.nas:=\
 # @brief Default packages for @DEVICE_TYPE router.
 ##
 DEFAULT_PACKAGES.router:=\
-	dnsmasq \
-	firewall4 \
-	nftables \
-	kmod-nft-offload \
+	dnsmasq-full \
+	firewall \
+	kmod-ipt-nat \
+	kmod-ipt-nat6 \
 	odhcp6c \
 	odhcpd-ipv6only \
 	ppp \

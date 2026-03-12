@@ -33,6 +33,7 @@ ifneq ($(OPENWRT_BUILD),1)
   include $(TOPDIR)/include/toplevel.mk
 else
   include rules.mk
+  include $(INCLUDE_DIR)/target.mk
   include $(INCLUDE_DIR)/depends.mk
   include $(INCLUDE_DIR)/subdir.mk
   include target/Makefile
@@ -134,6 +135,10 @@ world: prepare $(target/stamp-compile) $(package/stamp-compile) $(package/stamp-
 	$(_SINGLE)$(SUBMAKE) -r package/index
 	$(_SINGLE)$(SUBMAKE) -r json_overview_image_info
 	$(_SINGLE)$(SUBMAKE) -r checksum
+	[ -f "$(BIN_DIR)/packages/Packages.manifest" ] && cp -f "$(BIN_DIR)/packages/Packages.manifest" "$(BIN_DIR)/" || true
+	rm -rf $(BIN_DIR)/$(LINUX_VERSION)
+	mv -f $(BIN_DIR)/packages $(BIN_DIR)/$(LINUX_VERSION) 2>/dev/null
+	mv -f $(BIN_DIR)/profiles.json $(BIN_DIR)/profiles.json.b 2>/dev/null
 ifneq ($(CONFIG_CCACHE),)
 	$(STAGING_DIR_HOST)/bin/ccache -s
 endif

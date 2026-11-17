@@ -891,6 +891,7 @@ define Device/DumpInfo
 Target-Profile: DEVICE_$(1)
 Target-Profile-Name: $(DEVICE_DISPLAY)
 Target-Profile-Packages: $(DEVICE_PACKAGES) $(FEED_DEVICE_PACKAGES)
+Target-Profile-ImageSize: $(shell echo $$(( $(call exp_units,$(IMAGE_SIZE)) / 1024 )))
 Target-Profile-hasImageMetadata: $(if $(foreach image,$(IMAGES),$(findstring append-metadata,$(IMAGE/$(image)))),1,0)
 Target-Profile-SupportedDevices: $(SUPPORTED_DEVICES)
 $(if $(BROKEN),Target-Profile-Broken: $(BROKEN))
